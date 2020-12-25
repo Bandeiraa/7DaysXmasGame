@@ -3,7 +3,7 @@ extends KinematicBody2D
 export (int) var speed = 50
 
 var velocity = Vector2()
-
+	
 func get_input():
 	velocity = Vector2()
 	if Input.is_action_pressed('ui_right'):
@@ -19,3 +19,6 @@ func _physics_process(_delta):
 	set_position(pos)
 	get_input()
 	velocity = move_and_slide(velocity)
+	
+func canDestroy():
+	queue_free()

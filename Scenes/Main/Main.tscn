@@ -10,3 +10,6 @@ position = Vector2( 72, 342 )
 
 [node name="DialogueSpawner" type="Position2D" parent="."]
 position = Vector2( 72, 156 )
+
+[node name="EnemySpawner" type="Position2D" parent="."]
+[connection signal="canSpawn" from="." to="." method="canSpawn"]
