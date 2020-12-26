@@ -34,7 +34,7 @@ func areaEntered(enemyArea):
 		deathTimer.start()
 		enemyArea.armor -= 1
 		labelAnimation.play("DamageAnimation")
-		damageLabel.text = str(1)
+		damageLabel.text = str(-1)
 		velocity.y = 0
 		velocity.x = 0
 		$EnemySprite.hide()

@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
 export (int) var speed = 50
-var goblinProjectile = preload("res://Scenes/Character/GoblinProjectile.tscn")
 onready var shootTimer = get_node("ShootCooldown")
 
+var goblinProjectile = preload("res://Scenes/Character/GoblinProjectile.tscn")
 var velocity = Vector2()
+var _reload; var _changeScene
 
 func _ready():
 	shoot()
@@ -16,7 +17,6 @@ func shoot():
 		
 func createProjectile(position):
 	var projectile = goblinProjectile.instance()
-	#projectile.set_position(position)
 	position.add_child(projectile)  
 		
 func get_input():
@@ -36,7 +36,10 @@ func _physics_process(_delta):
 	velocity = move_and_slide(velocity)
 	
 func canDestroy():
-	queue_free()
-
+	$ChangeSceneCooldown.start()
+	
 func onShootTimeout():
 	shoot()
+
+func onTimerCooldown():
+	_changeScene = get_tree().change_scene("res://Scenes/Interface/GameOver.tscn")

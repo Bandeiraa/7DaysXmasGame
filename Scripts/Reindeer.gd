@@ -20,7 +20,7 @@ func areaEntered(enemyArea):
 	if enemyArea.is_in_group("Goblin"):
 		enemyArea.armor -= 100000000
 		labelAnimation.play("DamageAnimation")
-		damageLabel.text = str(100000000)
+		damageLabel.text = str(-100000000)
 		velocity.y = 0
 		$EnemySprite.hide()
 		print("Vida do player: ", enemyArea.armor)

@@ -1,8 +1,63 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/GoblinProjectile.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Enemies/Projectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fonts/FreePixel.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="Animation" id=2]
+resource_name = "damageDealth"
+tracks/0/type = "value"
+tracks/0/path = NodePath("DamageLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageLabel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -19.3494, -26.7824 ), Vector2( -26, -26.782 ), Vector2( -13, -26.782 ), Vector2( -19.3494, -26.7824 ) ]
+}
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 3 )
 
 [node name="GoblinProjectile" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 velocity = Vector2( 0, -150 )
+
+[node name="Animator" type="AnimationPlayer" parent="." index="3"]
+anims/damageDealth = SubResource( 2 )
+
+[node name="DamageLabel" type="Label" parent="." index="4"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -19.3494
+margin_top = -26.7824
+margin_right = 20.6506
+margin_bottom = -12.7824
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "1111"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeathTimer" type="Timer" parent="." index="5"]
+[connection signal="timeout" from="DeathTimer" to="." method="onDeathTimeout"]

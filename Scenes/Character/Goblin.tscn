@@ -29,5 +29,9 @@ position = Vector2( 0, -15.4597 )
 
 [node name="ShootCooldown" type="Timer" parent="."]
 wait_time = 0.3
+
+[node name="ChangeSceneCooldown" type="Timer" parent="."]
+wait_time = 0.2
 [connection signal="canQueueFree" from="GoblinCollision" to="." method="canDestroy"]
 [connection signal="timeout" from="ShootCooldown" to="." method="onShootTimeout"]
+[connection signal="timeout" from="ChangeSceneCooldown" to="." method="onTimerCooldown"]
