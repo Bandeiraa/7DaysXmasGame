@@ -77,6 +77,6 @@ anims/DamageAnimation = SubResource( 3 )
 [node name="ShootTimer" type="Timer" parent="." index="5"]
 
 [node name="SkillSpawn" type="Position2D" parent="." index="6"]
-position = Vector2( 0, 70.6353 )
+position = Vector2( 0, 19.6929 )
 [connection signal="timeout" from="DeathTimer" to="." method="onDeathTimeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="onShootTimeout"]

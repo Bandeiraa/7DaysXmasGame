@@ -1,10 +1,8 @@
 extends "res://Scripts/Enemy.gd"
 
-export var armor = 4 setget setArmor
-
+export var armor = 6 setget setArmor
 var offset = Vector2()
-var spell
-var mageSpells = [preload("res://Scenes/Enemies/IceBeam.tscn"), preload("res://Scenes/Enemies/FireWave.tscn")]
+#var mageSpells = [preload("res://Scenes/Enemies/IceBeam.tscn"), preload("res://Scenes/Enemies/FireWave.tscn")]
 onready var labelAnimation = get_node("Animator")
 onready var damageLabel = get_node("DamageLabel")
 onready var deathTimer = get_node("DeathTimer")
@@ -15,20 +13,7 @@ func _ready():
 	add_to_group("Enemy")
 	chooseDirection()
 	_connection = connect("area_entered", self, "areaEntered")
-	shoot()
-	
-func shoot():
-	randomize()
-	var skill = get_node("SkillSpawn")
-	var randomIndex = randi() % 10 + 1
-	if randomIndex > 8:
-		spell = mageSpells[0].instance()
-		spell.set_position(get_global_position())
-		get_tree().get_root().add_child(spell)
-	else:
-		spell = mageSpells[1].instance()
-		skill.add_child(spell)  
-	shootTimer.start()
+	#shoot()
 	
 func chooseDirection():
 	randomize()
@@ -64,6 +49,3 @@ func setArmor(newValue):
 		
 func onDeathTimeout():
 	queue_free()
-
-func onShootTimeout():
-	shoot()
