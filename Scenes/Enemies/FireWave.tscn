@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Enemies/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/FireWave.gd" type="Script" id=2]
+
+[node name="Projectile" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+visible = false
+
+[node name="Projectile" parent="." index="1"]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="3"]
+modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 1, 0, 0, 1 )
+polygon = PoolVector2Array( -1.13805, -12.8241, -24.3309, 29.8908, 21.5542, 29.7239, 1.03107, -12.991 )
+
+[node name="SkillDuration" type="Timer" parent="." index="4"]
+wait_time = 0.3
+autostart = true
+[connection signal="timeout" from="SkillDuration" to="." method="onSkillTimeout"]

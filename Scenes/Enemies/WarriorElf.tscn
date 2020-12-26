@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Enemies/MageElf.tscn" type="PackedScene" id=1]
 
 [node name="MageElf" instance=ExtResource( 1 )]
-velocity = Vector2( 25, 100 )
+script = null
 
 [node name="EnemySprite" parent="." index="0"]
 modulate = Color( 1, 0, 0, 1 )
