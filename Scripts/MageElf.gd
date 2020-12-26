@@ -2,6 +2,9 @@ extends "res://Scripts/Enemy.gd"
 
 export var armor = 4 setget setArmor
 var offset = Vector2()
+onready var labelAnimation = get_node("Animator")
+onready var damageLabel = get_node("DamageLabel")
+onready var deathTimer = get_node("DeathTimer")
 
 func _ready():
 	var _connection
@@ -21,14 +24,26 @@ func chooseDirection():
 			velocity.x = -velocity.x
 			
 func _process(_delta):
-	if get_position().x <= 0 + 16:
+	if get_position().x <= 0 + 10:
 		velocity.x = abs(velocity.x)
-	if get_position().x >= get_viewport_rect().size.x - 16:
+	if get_position().x >= get_viewport_rect().size.x - 10:
 		velocity.x = -abs(velocity.x)
 		
 func areaEntered(enemyArea):
 	if enemyArea.is_in_group("Goblin"):
-		enemyArea.armor -= 2
+		deathTimer.start()
+		enemyArea.armor -= 1
+		labelAnimation.play("DamageAnimation")
+		damageLabel.text = str(1)
+		velocity.y = 0
+		velocity.x = 0
+		$EnemySprite.hide()
+		print("Vida do player: ", enemyArea.armor)
 		
 func setArmor(newValue):
-	pass
+	armor = newValue
+	if armor <= 0:
+		queue_free()
+		
+func onDeathTimeout():
+	queue_free()

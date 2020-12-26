@@ -59,7 +59,6 @@ margin_top = 51.9874
 margin_right = 46.3496
 margin_bottom = 65.9873
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1

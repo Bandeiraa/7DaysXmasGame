@@ -17,10 +17,11 @@ export(int) var yDistanceOffset = 27
 export(int) var velocityOffset = 35
 
 func _ready():
-	var character = loadGoblin.instance()
 	var label = loadText.instance()
-	goblinSpawner.add_child(character)
+	var goblin = loadGoblin.instance()
 	dialogueSpawner.add_child(label)
+	goblinSpawner.add_child(goblin)
+	$GoblinSpawner/Goblin/CannonSpawner.hide()
 	spawnCurrentPosition = goblinSpawner.get_position()
 	label.connect("canClose", self, "canCall")
 	
@@ -39,5 +40,6 @@ func _process(delta):
 			goblinSpawner.position.y = spawnCurrentPosition.y
 			spawnKey = true
 		elif spawnKey == true:
+			$GoblinSpawner/Goblin/CannonSpawner.show()
 			emit_signal("canSpawn")
 			spawnKey = false

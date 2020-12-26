@@ -11,7 +11,6 @@ extents = Vector2( 31.9474, 31.6786 )
 script = ExtResource( 2 )
 
 [node name="GoblinCollider" type="CollisionShape2D" parent="."]
-visible = false
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
@@ -24,4 +23,11 @@ texture = ExtResource( 1 )
 
 [node name="GoblinCollider" type="CollisionShape2D" parent="GoblinCollision"]
 shape = SubResource( 1 )
+
+[node name="CannonSpawner" type="Position2D" parent="."]
+position = Vector2( 0, -15.4597 )
+
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 0.3
 [connection signal="canQueueFree" from="GoblinCollision" to="." method="canDestroy"]
+[connection signal="timeout" from="ShootCooldown" to="." method="onShootTimeout"]
