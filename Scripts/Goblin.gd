@@ -4,6 +4,7 @@ export (int) var speed = 50
 onready var shootTimer = get_node("ShootCooldown")
 
 var goblinProjectile = preload("res://Scenes/Character/GoblinProjectile.tscn")
+onready var walkAnimation = get_node("WalkAnimation")
 var velocity = Vector2()
 var _reload; var _changeScene
 
@@ -22,8 +23,10 @@ func createProjectile(position):
 func get_input():
 	velocity = Vector2()
 	if Input.is_action_pressed('ui_right'):
+		walkAnimation.play("RightAnim")
 		velocity.x += 1
 	if Input.is_action_pressed('ui_left'):
+		walkAnimation.play("RightAnim")
 		velocity.x -= 1
 	velocity = velocity.normalized() * speed
 

@@ -76,4 +76,5 @@ __meta__ = {
 }
 
 [node name="DeathTimer" type="Timer" parent="." index="5"]
+wait_time = 0.1
 [connection signal="timeout" from="DeathTimer" to="." method="onDeathTimeout"]

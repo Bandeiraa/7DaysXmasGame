@@ -12,12 +12,6 @@ func areaEntered(enemyArea):
 	if enemyArea.is_in_group("Goblin"):
 		deathTimer.start()
 		enemyArea.armor -= 3
-		animator.play("DamageDealth")
-		damageLabel.text = str(-3)
-		velocity.y = 0
-		velocity.x = 0
-		$Projectile.hide()
-		#print("Vida do player: ", enemyArea.armor)
 		
 func onDeathTimeout():
 	queue_free()
