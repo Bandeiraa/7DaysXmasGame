@@ -1,21 +1,18 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Sprites/Goblin/JumpGoblinRight.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Goblin/GoblinLeftSheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Goblin.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/GoblinDamageArea.gd" type="Script" id=3]
 [ext_resource path="res://Fonts/FreePixel.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Sprites/Goblin/GoblinRightSheet.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.7588, 20.1222 )
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 4 )
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 14.9935, 10.0403 )
-
-[sub_resource type="Animation" id=3]
-resource_name = "minosHealth"
+[sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("HealthLabel:rect_position")
@@ -42,35 +39,35 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "LeftAnim"
-length = 0.9
+length = 0.8
 tracks/0/type = "value"
-tracks/0/path = NodePath("GoblinCollision/GoblinSprite:frame")
+tracks/0/path = NodePath("GoblinCollision/GoblinSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 0.3, 0.5, 0.7, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0, 1, 1, 3, 0 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("GoblinCollision/GoblinSprite:position")
+tracks/1/path = NodePath("GoblinCollision/GoblinCollider:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1, 0.3, 0.5, 0.7, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -15 ), Vector2( 0, -30 ), Vector2( 0, -15 ), Vector2( 0, 0 ) ]
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -1.89672, -15.1708, -3.15949, -14.8902, -6.9478, -13.3468, -6.80749, -11.3825, -6.9478, -6.19108, -10.8764, -2.12215, -11.8586, -0.157845, -11.9989, 9.80401, -10.8764, 13.0311, -9.19272, 14.8551, -4.84318, 15.9775, 3.8559, 15.9775, 8.20544, 14.9954, 10.0294, 12.8908, 11.1519, 9.38309, 11.1519, 0.263079, 13.6774, -0.859383, 16.203, -6.75231, 15.0805, -6.89262, 11.8534, -8.15539, 5.96052, -13.0662, 1.61098, -14.8902 ), PoolVector2Array( -1.89672, -15.1708, -3.15949, -14.8902, -6.9478, -13.3468, -6.80749, -11.3825, -6.9478, -6.19108, -10.8764, -2.12215, -11.8586, -0.157845, -11.9989, 9.80401, -10.8764, 13.0311, -9.19272, 14.8551, -4.84318, 15.9775, 3.8559, 15.9775, 8.20544, 14.9954, 10.0294, 12.8908, 11.1519, 9.38309, 11.1519, 0.263079, 9.87023, -1.89795, 7.1302, -4.99154, 12.8754, -5.07993, 14.6432, -6.14059, 15.8806, -7.37803, 15.8806, -10.6484, 5.96052, -13.0662, 1.61098, -14.8902 ), PoolVector2Array( -1.89672, -15.1708, -3.15949, -14.8902, -6.9478, -13.3468, -6.80749, -11.3825, -6.9478, -6.19108, -10.8764, -2.12215, -11.8586, -0.157845, -11.9989, 9.80401, -10.8764, 13.0311, -9.19272, 14.8551, -4.84318, 15.9775, 3.8559, 15.9775, 8.20544, 14.9954, 10.0294, 12.8908, 11.1519, 9.38309, 11.1519, 0.263079, 9.87023, -1.89795, 7.1302, -4.99154, 12.9638, -4.81477, 14.7316, -4.99154, 15.7923, -6.31737, 15.969, -10.3832, 11.1961, -10.0297, 9.25151, -8.26191, 5.96052, -13.0662, 1.61098, -14.8902 ), PoolVector2Array( -1.89672, -15.1708, -3.15949, -14.8902, -6.9478, -13.3468, -6.80749, -11.3825, -6.9478, -6.19108, -10.8764, -2.12215, -11.8586, -0.157845, -11.9989, 9.80401, -10.8764, 13.0311, -9.19272, 14.8551, -4.84318, 15.9775, 3.8559, 15.9775, 8.20544, 14.9954, 10.0294, 12.8908, 11.1519, 9.38309, 11.1519, 0.263079, 13.6774, -0.859383, 16.203, -6.75231, 15.0805, -6.89262, 11.8534, -8.15539, 5.96052, -13.0662, 1.61098, -14.8902 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("GoblinCollision/GoblinSprite:flip_h")
+tracks/2/path = NodePath("GoblinCollision/GoblinSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -79,59 +76,71 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "RightAnim"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("GoblinCollision/GoblinSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0, 1, 2, 3, 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("GoblinCollision/GoblinSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -15 ), Vector2( 0, -30 ), Vector2( 0, -15 ), Vector2( 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("GoblinCollision/GoblinSprite:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ ExtResource( 1 ) ]
+"values": [ 3 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("GoblinCollision/GoblinSprite:hframes")
+tracks/3/path = NodePath("GoblinCollision/GoblinSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "RightAnim"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("GoblinCollision/GoblinSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 5 ]
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GoblinCollision/GoblinCollider:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -1.89672, -15.1708, -3.15949, -14.8902, -6.9478, -13.3468, -6.80749, -11.3825, -6.9478, -6.19108, -10.8764, -2.12215, -11.8586, -0.157845, -11.9989, 9.80401, -10.8764, 13.0311, -9.19272, 14.8551, -4.84318, 15.9775, 3.8559, 15.9775, 8.20544, 14.9954, 10.0294, 12.8908, 11.1519, 9.38309, 11.1519, 0.263079, 13.6774, -0.859383, 16.203, -6.75231, 15.0805, -6.89262, 11.8534, -8.15539, 5.96052, -13.0662, 1.61098, -14.8902 ), PoolVector2Array( -1.89672, -15.1708, -3.15949, -14.8902, -6.9478, -13.3468, -6.80749, -11.3825, -6.9478, -6.19108, -10.8764, -2.12215, -11.8586, -0.157845, -11.9989, 9.80401, -10.8764, 13.0311, -9.19272, 14.8551, -4.84318, 15.9775, 3.8559, 15.9775, 8.20544, 14.9954, 10.0294, 12.8908, 11.1519, 9.38309, 11.1519, 0.263079, 9.87023, -1.89795, 7.1302, -4.99154, 12.8754, -5.07993, 14.6432, -6.14059, 15.8806, -7.37803, 15.8806, -10.6484, 5.96052, -13.0662, 1.61098, -14.8902 ), PoolVector2Array( -1.89672, -15.1708, -3.15949, -14.8902, -6.9478, -13.3468, -6.80749, -11.3825, -6.9478, -6.19108, -10.8764, -2.12215, -11.8586, -0.157845, -11.9989, 9.80401, -10.8764, 13.0311, -9.19272, 14.8551, -4.84318, 15.9775, 3.8559, 15.9775, 8.20544, 14.9954, 10.0294, 12.8908, 11.1519, 9.38309, 11.1519, 0.263079, 9.87023, -1.89795, 7.1302, -4.99154, 12.9638, -4.81477, 14.7316, -4.99154, 15.7923, -6.31737, 15.969, -10.3832, 11.1961, -10.0297, 9.25151, -8.26191, 5.96052, -13.0662, 1.61098, -14.8902 ), PoolVector2Array( -1.89672, -15.1708, -3.15949, -14.8902, -6.9478, -13.3468, -6.80749, -11.3825, -6.9478, -6.19108, -10.8764, -2.12215, -11.8586, -0.157845, -11.9989, 9.80401, -10.8764, 13.0311, -9.19272, 14.8551, -4.84318, 15.9775, 3.8559, 15.9775, 8.20544, 14.9954, 10.0294, 12.8908, 11.1519, 9.38309, 11.1519, 0.263079, 13.6774, -0.859383, 16.203, -6.75231, 15.0805, -6.89262, 11.8534, -8.15539, 5.96052, -13.0662, 1.61098, -14.8902 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GoblinCollision/GoblinSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("GoblinCollision/GoblinSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0 ]
 }
 
 [node name="Goblin" type="KinematicBody2D"]
@@ -141,14 +150,14 @@ script = ExtResource( 2 )
 visible = false
 position = Vector2( -0.556812, 0 )
 scale = Vector2( 0.5, 0.5 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="GoblinCollision" type="Area2D" parent="."]
 script = ExtResource( 3 )
 
 [node name="GoblinSprite" type="Sprite" parent="GoblinCollision"]
-texture = ExtResource( 1 )
-hframes = 5
+texture = ExtResource( 5 )
+hframes = 3
 
 [node name="HealthLabel" type="Label" parent="GoblinCollision"]
 margin_left = -87.6813
@@ -163,13 +172,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GoblinCollider" type="CollisionShape2D" parent="GoblinCollision"]
+[node name="GoblinCollider" type="CollisionPolygon2D" parent="GoblinCollision"]
 visible = false
-position = Vector2( -0.500565, 0 )
-shape = SubResource( 1 )
+position = Vector2( -1.98649, 0 )
+polygon = PoolVector2Array( -1.89672, -15.1708, -3.15949, -14.8902, -6.9478, -13.3468, -6.80749, -11.3825, -6.9478, -6.19108, -10.8764, -2.12215, -11.8586, -0.157845, -11.9989, 9.80401, -10.8764, 13.0311, -9.19272, 14.8551, -4.84318, 15.9775, 3.8559, 15.9775, 8.20544, 14.9954, 10.0294, 12.8908, 11.1519, 9.38309, 11.1519, 0.263079, 9.87023, -1.89795, 7.1302, -4.99154, 12.8754, -5.07993, 14.6432, -6.14059, 15.8806, -7.37803, 15.8806, -10.6484, 5.96052, -13.0662, 1.61098, -14.8902 )
 
 [node name="Animator" type="AnimationPlayer" parent="GoblinCollision"]
-anims/minosHealth = SubResource( 3 )
+anims/minosHealth = SubResource( 4 )
 
 [node name="CannonSpawner" type="Position2D" parent="."]
 position = Vector2( 0, -15.4597 )
@@ -181,8 +190,8 @@ wait_time = 0.3
 wait_time = 0.2
 
 [node name="WalkAnimation" type="AnimationPlayer" parent="."]
-anims/LeftAnim = SubResource( 6 )
-anims/RightAnim = SubResource( 5 )
+anims/LeftAnim = SubResource( 5 )
+anims/RightAnim = SubResource( 6 )
 [connection signal="canQueueFree" from="GoblinCollision" to="." method="canDestroy"]
 [connection signal="timeout" from="ShootCooldown" to="." method="onShootTimeout"]
 [connection signal="timeout" from="ChangeSceneCooldown" to="." method="onTimerCooldown"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/JumpGoblinFull.png-0ab182b372f2dbcdfc1a0a143fd8247f.stex"
+path="res://.import/GoblinRightSheet.png-b53e45c97d2cb158d01291d437880e49.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Goblin/JumpGoblinFull.png"
-dest_files=[ "res://.import/JumpGoblinFull.png-0ab182b372f2dbcdfc1a0a143fd8247f.stex" ]
+source_file="res://Sprites/Goblin/GoblinRightSheet.png"
+dest_files=[ "res://.import/GoblinRightSheet.png-b53e45c97d2cb158d01291d437880e49.stex" ]
 
 [params]
 
