@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Enemies/MageElf.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Elfs/WarriorElf.png" type="Texture" id=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends \"res://Scripts/Enemy.gd\"
@@ -12,12 +13,14 @@ onready var labelAnimation = get_node(\"Animator\")
 onready var damageLabel = get_node(\"DamageLabel\")
 onready var deathTimer = get_node(\"DeathTimer\")
 onready var shootTimer = get_node(\"ShootTimer\")
+onready var warriorElf = get_node(\"ElfAnimator\")
 
 func _ready():
 	var _connection
 	add_to_group(\"Enemy\")
 	chooseDirection()
 	_connection = connect(\"area_entered\", self, \"areaEntered\")
+	warriorElf.play(\"Walk\")
 	#shoot()
 	
 func chooseDirection():
@@ -62,7 +65,5 @@ velocity = Vector2( 25, 50 )
 armor = 8
 
 [node name="EnemySprite" parent="." index="0"]
-modulate = Color( 1, 0, 0, 1 )
-
-[node name="EnemyCollider" parent="." index="1"]
-visible = false
+texture = ExtResource( 2 )
+frame = 0

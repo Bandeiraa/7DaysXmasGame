@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Elfs/MageElf.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/MageElf.gd" type="Script" id=3]
 [ext_resource path="res://Fonts/FreePixel.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12.8599, 12.8777 )
+extents = Vector2( 9.13615, 16.1596 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 8
@@ -39,16 +39,35 @@ tracks/1/keys = {
 "values": [ Vector2( -19.7834, 13.1889 ), Vector2( -26, 13.189 ), Vector2( -13, 13.189 ), Vector2( -19.7834, 13.1889 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Walk"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
 [node name="MageElf" instance=ExtResource( 1 )]
 position = Vector2( 72, 0 )
 script = ExtResource( 3 )
 velocity = Vector2( 75, 50 )
 
 [node name="EnemySprite" parent="." index="0"]
-scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
+hframes = 2
+frame = 1
 
 [node name="EnemyCollider" parent="." index="1"]
+position = Vector2( -0.0992126, -0.0992126 )
 shape = SubResource( 1 )
 
 [node name="DamageLabel" type="Label" parent="." index="2"]
@@ -78,5 +97,8 @@ anims/DamageAnimation = SubResource( 3 )
 
 [node name="SkillSpawn" type="Position2D" parent="." index="6"]
 position = Vector2( 0, 19.6929 )
+
+[node name="ElfAnimator" type="AnimationPlayer" parent="." index="7"]
+anims/Walk = SubResource( 4 )
 [connection signal="timeout" from="DeathTimer" to="." method="onDeathTimeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="onShootTimeout"]

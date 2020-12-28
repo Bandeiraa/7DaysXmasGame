@@ -9,12 +9,14 @@ onready var labelAnimation = get_node("Animator")
 onready var damageLabel = get_node("DamageLabel")
 onready var deathTimer = get_node("DeathTimer")
 onready var shootTimer = get_node("ShootTimer")
+onready var mageElf = get_node("ElfAnimator")
 
 func _ready():
 	var _connection
 	add_to_group("Enemy")
 	chooseDirection()
 	_connection = connect("area_entered", self, "areaEntered")
+	mageElf.play("Walk")
 	shoot()
 	
 func shoot():

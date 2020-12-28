@@ -14,7 +14,7 @@ var spawnKey = false
 signal canSpawn
 
 export(int) var yDistanceOffset = 27
-export(int) var velocityOffset = 35
+export(int) var velocityOffset = 70
 
 func _ready():
 	var label = loadText.instance()
@@ -37,6 +37,7 @@ func _process(delta):
 		spawnCurrentPosition.y -= delta * velocityOffset
 		var viewSize = get_viewport_rect().size
 		if spawnCurrentPosition.y >= viewSize.y - yDistanceOffset:
+			$GoblinSpawner/Goblin/InitialAnimation.play("Initial")
 			goblinSpawner.position.y = spawnCurrentPosition.y
 			spawnKey = true
 		elif spawnKey == true:
