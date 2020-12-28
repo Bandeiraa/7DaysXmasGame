@@ -1,20 +1,18 @@
 extends Area2D
 
-var armor = 10 setget setArmor
-onready var healthLabel = get_node("HealthLabel")
-onready var animator = get_node("Animator")
-
-signal canQueueFree
+export(int) var armor = 10 setget setArmor
+signal canQueueFree; signal canGetValue
 
 func _ready():
-	healthLabel.text = ("Vida: " + str(armor))
 	add_to_group("Goblin")
 	
 func setArmor(newValue):
 	armor = newValue
-	animator.play("minosHealth")
-	healthLabel.text = ("Vida: " + str(armor))
+	StoreHp.storedValue.currentHp = armor
+	StoreHp.save()
+	emit_signal("canGetValue")
 	if armor <= 0:
-		animator.play("minosHealth")
-		healthLabel.text = "Vida: 0"
+		StoreHp.storedValue.currentHp = 0
+		StoreHp.save()
+		emit_signal("canGetValue")
 		emit_signal("canQueueFree")

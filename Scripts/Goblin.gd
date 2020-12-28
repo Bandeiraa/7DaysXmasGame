@@ -7,19 +7,17 @@ var goblinProjectile = preload("res://Scenes/Character/GoblinProjectile.tscn")
 onready var walkAnimation = get_node("WalkAnimation")
 var velocity = Vector2()
 var _reload; var _changeScene
+signal canChangeHp
 
 func _ready():
 	shoot()
 	
 func shoot():
-	var cannon = get_node("CannonSpawner")
-	createProjectile(cannon)
+	var projectile = goblinProjectile.instance() 
+	projectile.set_position(get_global_position())
+	get_tree().get_root().call_deferred("add_child", projectile) 
 	shootTimer.start()
-		
-func createProjectile(position):
-	var projectile = goblinProjectile.instance()
-	position.add_child(projectile)  
-		
+
 func get_input():
 	velocity = Vector2()
 	if Input.is_action_pressed('ui_right'):
@@ -46,3 +44,6 @@ func onShootTimeout():
 
 func onTimerCooldown():
 	_changeScene = get_tree().change_scene("res://Scenes/Interface/GameOver.tscn")
+
+func canGetValue():
+	emit_signal("canChangeHp")

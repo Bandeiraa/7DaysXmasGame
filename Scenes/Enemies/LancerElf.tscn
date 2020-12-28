@@ -60,6 +60,7 @@ func onDeathTimeout():
 "
 
 [node name="MageElf" instance=ExtResource( 1 )]
+z_index = 0
 script = SubResource( 1 )
 velocity = Vector2( 100, 50 )
 armor = 4
@@ -67,3 +68,6 @@ armor = 4
 [node name="EnemySprite" parent="." index="0"]
 texture = ExtResource( 2 )
 frame = 0
+
+[node name="DeathTimer" parent="." index="4"]
+wait_time = 0.1

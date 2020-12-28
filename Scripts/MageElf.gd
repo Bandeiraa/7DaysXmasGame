@@ -4,7 +4,7 @@ export var armor = 4 setget setArmor
 
 var offset = Vector2()
 var spell
-var mageSpells = [preload("res://Scenes/Enemies/IceBeam.tscn"), preload("res://Scenes/Enemies/FireWave.tscn")]
+var mageSpells = [preload("res://Scenes/Enemies/IceBeam.tscn"), preload("res://Scenes/Enemies/IceWave.tscn")]
 onready var labelAnimation = get_node("Animator")
 onready var damageLabel = get_node("DamageLabel")
 onready var deathTimer = get_node("DeathTimer")

@@ -19,6 +19,10 @@ config/name="7DaysXmasGame"
 run/main_scene="res://Scenes/Main/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+StoreHp="*res://Scripts/storeHp.gd"
+
 [display]
 
 window/size/width=144

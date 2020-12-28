@@ -92,6 +92,7 @@ __meta__ = {
 anims/DamageAnimation = SubResource( 3 )
 
 [node name="DeathTimer" type="Timer" parent="." index="4"]
+wait_time = 0.1
 
 [node name="ShootTimer" type="Timer" parent="." index="5"]
 
