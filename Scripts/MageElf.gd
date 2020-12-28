@@ -5,9 +5,7 @@ export var armor = 4 setget setArmor
 var offset = Vector2()
 var spell
 var mageSpells = [preload("res://Scenes/Enemies/IceBeam.tscn"), preload("res://Scenes/Enemies/IceWave.tscn")]
-onready var labelAnimation = get_node("Animator")
-onready var damageLabel = get_node("DamageLabel")
-onready var deathTimer = get_node("DeathTimer")
+
 onready var shootTimer = get_node("ShootTimer")
 onready var mageElf = get_node("ElfAnimator")
 
@@ -50,22 +48,14 @@ func _process(_delta):
 		
 func areaEntered(enemyArea):
 	if enemyArea.is_in_group("Goblin"):
-		deathTimer.start()
 		enemyArea.armor -= 1
-		labelAnimation.play("DamageAnimation")
-		damageLabel.text = str(-1)
-		velocity.y = 0
-		velocity.x = 0
-		$EnemySprite.hide()
 		print("Vida do player: ", enemyArea.armor)
+		queue_free()
 		
 func setArmor(newValue):
 	armor = newValue
 	if armor <= 0:
 		queue_free()
 		
-func onDeathTimeout():
-	queue_free()
-
 func onShootTimeout():
 	shoot()

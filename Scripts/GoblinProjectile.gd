@@ -11,7 +11,7 @@ func _ready():
 func areaEntered(enemyArea):
 	if enemyArea.is_in_group("Enemy"):
 		deathTimer.start()
-		enemyArea.armor -= 1
+		enemyArea.armor -= 2
 		animator.play("damageDealth")
 		damageLabel.text = str(-1)
 		velocity.y = 0
