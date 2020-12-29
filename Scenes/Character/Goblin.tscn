@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sprites/Goblin/GoblinLeftSheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Goblin.gd" type="Script" id=2]
@@ -112,22 +112,6 @@ tracks/3/keys = {
 "values": [ PoolVector2Array( 7.30832, 4.97176, -1.98361, 5.28674, -9.70062, 8.27905, -11.748, 9.53897, -11.5905, 13.0038, -7.81074, 24.0281, -6.70831, 26.7054, -5.76337, 28.5662, -0.723682, 29.0387, 8.09576, 29.0387, 13.1354, 28.0937, 14.3954, 26.6763, 15.3403, 23.8415, 15.3403, 17.0694, 9.98565, 6.2026 ), PoolVector2Array( 5.3539, -9.87019, -0.539024, -9.02835, -1.8018, -7.48496, -12.0443, -5.80127, -12.0443, -2.43388, -6.85287, 13.9821, -5.73041, 17.0689, -3.90641, 19.3138, 0.162514, 20.1557, 9.28252, 20.1557, 13.0708, 19.0332, 15.1754, 16.9286, 16.4382, 13.7015, 16.2979, 4.30089, 12.9305, 1.35443, 10.8259, -0.750187, 8.16006, -2.29357, 10.1244, -3.69665, 11.3871, -6.08188, 11.2468, -7.76558, 10.1244, -8.88804 ), PoolVector2Array( 7.33604, -18.6768, 2.29791, -18.8536, -0.795685, -17.7929, -1.94473, -15.8484, -0.00018692, -12.1361, -7.68998, -11.8709, -12.0842, -10.2538, -8.2203, -5.77213, -6.36415, -9.0425, -2.82862, -8.15862, -5.12671, -6.56763, -6.67083, -3.63764, -6.67083, 5.87602, -5.72742, 9.21379, -3.74092, 11.0679, 0.232059, 11.9949, 8.70776, 11.9949, 12.6808, 10.803, 14.7997, 8.94893, 15.9916, 5.63811, 15.8591, -3.76463, 14.962, -5.87338, 13.2281, -7.81356, 8.30832, -11.3406, 10.2529, -13.1084, 11.3135, -15.2297, 11.043, -16.6866, 9.98769, -17.6162 ), PoolVector2Array( 5.3539, -9.87019, -0.539024, -9.02835, -1.8018, -7.48496, -12.0443, -5.80127, -12.0443, -2.43388, -6.85287, 13.9821, -5.73041, 17.0689, -3.90641, 19.3138, 0.162514, 20.1557, 9.28252, 20.1557, 13.0708, 19.0332, 15.1754, 16.9286, 16.4382, 13.7015, 16.2979, 4.30089, 12.9305, 1.35443, 10.8259, -0.750187, 8.16006, -2.29357, 10.1244, -3.69665, 11.3871, -6.08188, 11.2468, -7.76558, 10.1244, -8.88804 ), PoolVector2Array( 7.30832, 4.97176, -1.98361, 5.28674, -9.70062, 8.27905, -11.748, 9.53897, -11.5905, 13.0038, -7.81074, 24.0281, -6.70831, 26.7054, -5.76337, 28.5662, -0.723682, 29.0387, 8.09576, 29.0387, 13.1354, 28.0937, 14.3954, 26.6763, 15.3403, 23.8415, 15.3403, 17.0694, 9.98565, 6.2026 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Initial"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("GoblinCollision/GoblinSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 1, 0 ]
-}
-
 [node name="Goblin" type="KinematicBody2D"]
 script = ExtResource( 2 )
 speed = 150
@@ -153,21 +137,29 @@ position = Vector2( -2.13514, -8.1758 )
 polygon = PoolVector2Array( 0.601627, 5.52166, -5.7051, 5.52166, -7.17667, 6.78301, -7.80734, 12.8795, -11.8016, 17.084, -11.8016, 24.2316, -10.1198, 27.8054, -4.44375, 29.0668, 4.38566, 29.277, 9.43104, 28.0156, 10.9026, 23.6009, 10.9026, 17.084, 16.3684, 12.0386, 16.5787, 8.25458, 5.43678, 7.62391, 5.43678, 5.94211 )
 
 [node name="CannonSpawner" type="Position2D" parent="."]
-position = Vector2( 0, -15.4597 )
+position = Vector2( -1.25811, -3.01101 )
 
 [node name="ShootCooldown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.7
 
 [node name="ChangeSceneCooldown" type="Timer" parent="."]
 wait_time = 0.2
 
+[node name="FirstShootDelay" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="SlowDownTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [node name="WalkAnimation" type="AnimationPlayer" parent="."]
 anims/LeftAnim = SubResource( 2 )
 anims/RightAnim = SubResource( 3 )
-
-[node name="InitialAnimation" type="AnimationPlayer" parent="."]
-anims/Initial = SubResource( 4 )
 [connection signal="canGetValue" from="GoblinCollision" to="." method="canGetValue"]
 [connection signal="canQueueFree" from="GoblinCollision" to="." method="canDestroy"]
+[connection signal="canSlowDown" from="GoblinCollision" to="." method="onSlowDown"]
 [connection signal="timeout" from="ShootCooldown" to="." method="onShootTimeout"]
 [connection signal="timeout" from="ChangeSceneCooldown" to="." method="onTimerCooldown"]
+[connection signal="timeout" from="FirstShootDelay" to="." method="onFirstShootTimeout"]
+[connection signal="timeout" from="SlowDownTimer" to="." method="onSlowDownTimeout"]

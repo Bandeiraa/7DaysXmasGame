@@ -1,10 +1,12 @@
 extends Area2D
 
-export(int) var armor = 10 setget setArmor
-signal canQueueFree; signal canGetValue
+export(int) var armor = 20 setget setArmor
+signal canQueueFree; signal canGetValue; signal canSlowDown
 
 func _ready():
 	add_to_group("Goblin")
+	var _connection
+	_connection = connect("area_entered", self, "areaEntered")
 	
 func setArmor(newValue):
 	armor = newValue
@@ -16,3 +18,7 @@ func setArmor(newValue):
 		StoreHp.save()
 		emit_signal("canGetValue")
 		emit_signal("canQueueFree")
+		
+func areaEntered(enemyArea):
+	if enemyArea.is_in_group("IceSpear"):
+		emit_signal("canSlowDown")

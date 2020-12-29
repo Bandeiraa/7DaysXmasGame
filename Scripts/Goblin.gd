@@ -2,15 +2,18 @@ extends KinematicBody2D
 
 export (int) var speed = 50
 onready var shootTimer = get_node("ShootCooldown")
+onready var walkAnimation = get_node("WalkAnimation")
+onready var firstShoot = get_node("FirstShootDelay")
+onready var slowDown = get_node("SlowDownTimer")
 
 var goblinProjectile = preload("res://Scenes/Character/GoblinProjectile.tscn")
-onready var walkAnimation = get_node("WalkAnimation")
 var velocity = Vector2()
 var _reload; var _changeScene
+var callsCount; var auxCount = 0
 signal canChangeHp
 
 func _ready():
-	shoot()
+	firstShoot.start()
 	
 func shoot():
 	var projectile = goblinProjectile.instance() 
@@ -47,3 +50,18 @@ func onTimerCooldown():
 
 func canGetValue():
 	emit_signal("canChangeHp")
+
+func onFirstShootTimeout():
+	shoot()
+
+func onSlowDown():
+	auxCount += 1 
+	callsCount = auxCount
+	speed = speed/1.4
+	slowDown.start()
+	print(speed)
+	
+func onSlowDownTimeout():
+	speed = speed * pow(1.4, callsCount)
+	print(speed)
+	auxCount = 0 

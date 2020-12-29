@@ -48,7 +48,7 @@ func _process(delta):
 		spawnCurrentPosition.y -= delta * velocityOffset
 		var viewSize = get_viewport_rect().size
 		if spawnCurrentPosition.y >= viewSize.y - yDistanceOffset:
-			$GoblinSpawner/Goblin/InitialAnimation.play("Initial")
+			$GoblinSpawner/Goblin/WalkAnimation.play("RightAnim")
 			goblinSpawner.position.y = spawnCurrentPosition.y
 			spawnKey = true
 		elif spawnKey == true:

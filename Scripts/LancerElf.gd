@@ -12,7 +12,7 @@ func _ready():
 	add_to_group("Enemy")
 	chooseDirection()
 	_connection = connect("area_entered", self, "areaEntered")
-	lancerElf.play("Walk")
+	lancerElf.play("WalkAnimation")
 	#shoot()
 	
 func chooseDirection():

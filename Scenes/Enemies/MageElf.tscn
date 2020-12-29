@@ -35,13 +35,14 @@ texture = ExtResource( 2 )
 hframes = 2
 
 [node name="EnemyCollider" parent="." index="1"]
+visible = false
 position = Vector2( -0.0992126, -0.0992126 )
 shape = SubResource( 1 )
 
 [node name="ShootTimer" type="Timer" parent="." index="2"]
 
 [node name="SkillSpawn" type="Position2D" parent="." index="3"]
-position = Vector2( 0, 11.9146 )
+position = Vector2( -0.486137, 11.9146 )
 
 [node name="ElfAnimator" type="AnimationPlayer" parent="." index="4"]
 anims/Walk = SubResource( 2 )

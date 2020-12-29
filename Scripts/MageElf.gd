@@ -6,6 +6,7 @@ var offset = Vector2()
 var spell
 var mageSpells = [preload("res://Scenes/Enemies/IceBeam.tscn"), preload("res://Scenes/Enemies/IceWave.tscn")]
 
+signal slow
 onready var shootTimer = get_node("ShootTimer")
 onready var mageElf = get_node("ElfAnimator")
 
@@ -21,7 +22,7 @@ func shoot():
 	randomize()
 	var skill = get_node("SkillSpawn")
 	var randomIndex = randi() % 10 + 1
-	if randomIndex > 8:
+	if randomIndex > 6:
 		spell = mageSpells[0].instance()
 		spell.set_position(get_global_position())
 		get_tree().get_root().add_child(spell)
@@ -56,6 +57,9 @@ func setArmor(newValue):
 	armor = newValue
 	if armor <= 0:
 		queue_free()
+		
+func canSlow():
+	emit_signal("slow")
 		
 func onShootTimeout():
 	shoot()

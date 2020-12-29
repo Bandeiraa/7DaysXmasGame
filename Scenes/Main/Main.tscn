@@ -140,4 +140,5 @@ position = Vector2( 72, 156 )
 
 [node name="HudSpawner" type="Position2D" parent="."]
 position = Vector2( 0, 310 )
+z_index = 10
 [connection signal="canSpawn" from="." to="." method="canSpawn"]
