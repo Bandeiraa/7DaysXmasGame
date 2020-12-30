@@ -7,7 +7,7 @@ onready var buttonLabel = get_node("DialogueContainer/DialogueButton")
 signal canClose
 
 var dialogueCount = 0
-var dialogueArray = ["...........", "Aaaaaaaah!!", "Droga, aquele velho me jogou aqui de novo", "...........", "Quem ele pensa que é?", "Esse ano eu vou mostrar pro mundo quem o Papai Noel é de verdade"]
+var dialogueArray = ["...........", "Aaaaaaaah!!", "Droga, aquele velho me jogou aqui de novo", "...........", "Quem ele pensa que é?", "Esse ano eu vou mostrar pro mundo quem o Papai Noel é de verdade!!!"]
 
 func _ready():
 	animator.play("BlinkAnimation")

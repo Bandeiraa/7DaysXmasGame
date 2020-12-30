@@ -10,6 +10,7 @@ onready var goblinSpawner = get_node("GoblinSpawner")
 onready var dialogueSpawner = get_node("DialogueSpawner")
 onready var enemySpawner = get_node("EnemySpawner")
 onready var hudSpawner = get_node("HudSpawner")
+onready var animator = get_node("DamageAnimation")
 
 var spawnCurrentPosition
 var key = false
@@ -42,7 +43,8 @@ func canCall():
 func updateHp():
 	StoreHp.loadData()
 	var convertToString = str(StoreHp.storedValue.currentHp)
-	$HudSpawner/Hud/PlayerStatsContainer/Health.text = convertToString + " Hp"
+	$HudSpawner/Hud/PlayerStatsContainer/Health.text = "Vida: " + convertToString
+	animator.play("Damage")
 	currentHp = false
 	
 func _process(delta):
@@ -62,5 +64,5 @@ func _process(delta):
 		currentHp = false
 	StoreHp.loadData()
 	points = StoreHp.storedValue.totalPoints
-	$HudSpawner/Hud/PlayerStatsContainer/Points.text = str(points)
+	$HudSpawner/Hud/PlayerStatsContainer/Points.text = "Pontos: " + str(points)
 	

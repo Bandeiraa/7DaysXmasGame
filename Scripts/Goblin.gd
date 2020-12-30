@@ -5,6 +5,7 @@ onready var shootTimer = get_node("ShootCooldown")
 onready var walkAnimation = get_node("WalkAnimation")
 onready var firstShoot = get_node("FirstShootDelay")
 onready var slowDown = get_node("SlowDownTimer")
+onready var damageTaken = get_node("DamageAnimation")
 
 var goblinProjectile = preload("res://Scenes/Character/GoblinProjectile.tscn")
 var velocity = Vector2()
@@ -40,15 +41,13 @@ func _physics_process(_delta):
 	velocity = move_and_slide(velocity)
 	
 func canDestroy():
-	$ChangeSceneCooldown.start()
-	
+	_changeScene = get_tree().change_scene("res://Scenes/Interface/GameOver.tscn")
+
 func onShootTimeout():
 	shoot()
 
-func onTimerCooldown():
-	_changeScene = get_tree().change_scene("res://Scenes/Interface/GameOver.tscn")
-
 func canGetValue():
+	damageTaken.play("TakeDamage")
 	emit_signal("canChangeHp")
 
 func onFirstShootTimeout():
