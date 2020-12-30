@@ -3,10 +3,13 @@ extends "res://Scripts/Enemy.gd"
 export var armor = 4 setget setArmor
 
 var offset = Vector2()
-var spell
+var spell; var instancedBloodPosition
+
 var mageSpells = [preload("res://Scenes/Enemies/IceBeam.tscn"), preload("res://Scenes/Enemies/IceWave.tscn")]
+var bloodPool = preload("res://Scenes/Interface/BloodLifetime.tscn")
 
 signal slow
+
 onready var shootTimer = get_node("ShootTimer")
 onready var mageElf = get_node("ElfAnimator")
 
@@ -56,6 +59,9 @@ func areaEntered(enemyArea):
 func setArmor(newValue):
 	armor = newValue
 	if armor <= 0:
+		instancedBloodPosition = bloodPool.instance()
+		instancedBloodPosition.set_position(get_global_position())
+		get_tree().get_root().add_child(instancedBloodPosition)
 		StoreHp.storedValue.totalPoints += int(rand_range(1, 5))
 		StoreHp.save()
 		queue_free()

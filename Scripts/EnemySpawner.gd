@@ -18,7 +18,7 @@ func spawnRein():
 	randomize()
 	var enemy = enemies[0].instance()
 	var enemyPosition = Vector2()
-	enemyPosition.x = rand_range(0 - 3, get_viewport().get_visible_rect().size.x - 44)
+	enemyPosition.x = rand_range(0, get_viewport().get_visible_rect().size.x - 41)
 	enemy.set_position(enemyPosition)
 	self.add_child(enemy)
 	var randomWaitTime = rand_range(3, 10)
@@ -32,7 +32,7 @@ func spawnElf():
 	elfPosition.x = rand_range(0 - 3, get_viewport().get_visible_rect().size.x - 44)
 	elf.set_position(elfPosition)
 	self.add_child(elf)
-	var randomWaitTime = rand_range(1.5, 3)
+	var randomWaitTime = rand_range(1.0, 3.5)
 	spawnTimer.set_wait_time(randomWaitTime)
 	spawnTimer.start()
 

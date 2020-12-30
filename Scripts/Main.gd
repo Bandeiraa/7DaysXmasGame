@@ -65,4 +65,3 @@ func _process(delta):
 	StoreHp.loadData()
 	points = StoreHp.storedValue.totalPoints
 	$HudSpawner/Hud/PlayerStatsContainer/Points.text = "Pontos: " + str(points)
-	

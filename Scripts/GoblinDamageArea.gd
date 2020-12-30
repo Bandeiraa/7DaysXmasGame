@@ -24,3 +24,12 @@ func setArmor(newValue):
 func areaEntered(enemyArea):
 	if enemyArea.is_in_group("IceSpear"):
 		emit_signal("canSlowDown")
+	elif enemyArea.is_in_group("LancerSpear"):
+		$BleedTimer.start()
+
+func onBleedTimeout():
+	armor -= 2
+	StoreHp.storedValue.currentHp = armor
+	StoreHp.save()
+	emit_signal("canGetValue")
+	print("Sangramento!! vida atual: ", armor)

@@ -28,6 +28,7 @@ tracks/0/keys = {
 position = Vector2( 72, 0 )
 script = ExtResource( 1 )
 velocity = Vector2( 20, 30 )
+armor = 15
 
 [node name="EnemySprite" parent="." index="0"]
 scale = Vector2( 0.5, 0.5 )

@@ -152,6 +152,9 @@ visible = false
 position = Vector2( -2.13514, -8.1758 )
 polygon = PoolVector2Array( 0.601627, 5.52166, -5.7051, 5.52166, -7.17667, 6.78301, -7.80734, 12.8795, -11.8016, 17.084, -11.8016, 24.2316, -10.1198, 27.8054, -4.44375, 29.0668, 4.38566, 29.277, 9.43104, 28.0156, 10.9026, 23.6009, 10.9026, 17.084, 16.3684, 12.0386, 16.5787, 8.25458, 5.43678, 7.62391, 5.43678, 5.94211 )
 
+[node name="BleedTimer" type="Timer" parent="GoblinCollision"]
+one_shot = true
+
 [node name="CannonSpawner" type="Position2D" parent="."]
 position = Vector2( -1.25811, -3.01101 )
 
@@ -175,6 +178,7 @@ anims/TakeDamage = SubResource( 4 )
 [connection signal="canGetValue" from="GoblinCollision" to="." method="canGetValue"]
 [connection signal="canQueueFree" from="GoblinCollision" to="." method="canDestroy"]
 [connection signal="canSlowDown" from="GoblinCollision" to="." method="onSlowDown"]
+[connection signal="timeout" from="GoblinCollision/BleedTimer" to="GoblinCollision" method="onBleedTimeout"]
 [connection signal="timeout" from="ShootCooldown" to="." method="onShootTimeout"]
 [connection signal="timeout" from="FirstShootDelay" to="." method="onFirstShootTimeout"]
 [connection signal="timeout" from="SlowDownTimer" to="." method="onSlowDownTimeout"]
