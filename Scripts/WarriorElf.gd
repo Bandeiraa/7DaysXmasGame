@@ -39,4 +39,6 @@ func areaEntered(enemyArea):
 func setArmor(newValue):
 	armor = newValue
 	if armor <= 0:
+		StoreHp.storedValue.totalPoints += int(rand_range(5, 10))
+		StoreHp.save()
 		queue_free()

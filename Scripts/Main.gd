@@ -4,7 +4,7 @@ var loadGoblin = preload("res://Scenes/Character/Goblin.tscn")
 var loadText = preload("res://Scenes/Interface/Dialogue.tscn")
 var loadEnemy = preload("res://Scenes/Enemies/EnemySpawner.tscn")
 var playerHUD = preload("res://Scenes/Interface/Hud.tscn")
-var goblin
+var goblin; var points = 0
 
 onready var goblinSpawner = get_node("GoblinSpawner")
 onready var dialogueSpawner = get_node("DialogueSpawner")
@@ -27,6 +27,8 @@ func _ready():
 	dialogueSpawner.add_child(label)
 	spawnCurrentPosition = goblinSpawner.get_position()
 	label.connect("canClose", self, "canCall")
+	StoreHp.storedValue.totalPoints = 0
+	StoreHp.save()
 	
 func canSpawn():
 	var enemies = loadEnemy.instance()
@@ -58,3 +60,7 @@ func _process(delta):
 	if currentHp:
 		goblin.connect("canChangeHp", self, "updateHp")
 		currentHp = false
+	StoreHp.loadData()
+	points = StoreHp.storedValue.totalPoints
+	$HudSpawner/Hud/PlayerStatsContainer/Points.text = str(points)
+	

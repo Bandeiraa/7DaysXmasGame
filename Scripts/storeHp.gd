@@ -3,7 +3,8 @@ extends Node
 const FILE_NAME = "user://game-data.json"
 
 var storedValue = {
-	"currentHp": 10,
+	"currentHp": 0,
+	"totalPoints": 1
 }
 
 func save():

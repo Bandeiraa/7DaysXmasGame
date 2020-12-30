@@ -26,9 +26,9 @@ __meta__ = {
 [node name="Health" type="Label" parent="PlayerStatsContainer"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 48.9261
+margin_left = 48.2772
 margin_top = -13.5511
-margin_right = 88.9261
+margin_right = 88.2772
 margin_bottom = 2.44894
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 1, 0.972549, 1 )
@@ -36,6 +36,24 @@ custom_colors/font_color_shadow = Color( 0.607843, 0.678431, 0.717647, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 text = "20 Hp"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Points" type="Label" parent="PlayerStatsContainer"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 64.3222
+margin_top = 2.07507
+margin_right = 97.3222
+margin_bottom = 18.0751
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 1, 0.972549, 1 )
+custom_colors/font_color_shadow = Color( 0.607843, 0.678431, 0.717647, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "0"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

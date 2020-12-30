@@ -2,8 +2,7 @@ extends Area2D
 
 export var velocity = Vector2()
 export var armor = 5 setget setArmor
-onready var labelAnimation = get_node("Animator")
-onready var damageLabel = get_node("DamageLabel")
+var storedHp = 0
 
 func _ready():
 	var _connect
@@ -18,14 +17,14 @@ func _process(delta):
 		
 func areaEntered(enemyArea):
 	if enemyArea.is_in_group("Goblin"):
-		enemyArea.armor -= 100000000
-		labelAnimation.play("DamageAnimation")
-		damageLabel.text = str(-100000000)
-		velocity.y = 0
-		$EnemySprite.hide()
+		StoreHp.loadData()
+		storedHp = StoreHp.storedValue.currentHp
+		enemyArea.armor -= storedHp
 		print("Vida do player: ", enemyArea.armor)
 		
 func setArmor(newValue):
 	armor = newValue
 	if armor <= 0:
+		StoreHp.storedValue.totalPoints += int(rand_range(5, 15))
+		StoreHp.save()
 		queue_free()

@@ -7,6 +7,8 @@ func _ready():
 	add_to_group("Goblin")
 	var _connection
 	_connection = connect("area_entered", self, "areaEntered")
+	StoreHp.storedValue.currentHp = armor
+	StoreHp.save()
 	
 func setArmor(newValue):
 	armor = newValue

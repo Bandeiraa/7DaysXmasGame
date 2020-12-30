@@ -140,7 +140,7 @@ polygon = PoolVector2Array( 0.601627, 5.52166, -5.7051, 5.52166, -7.17667, 6.783
 position = Vector2( -1.25811, -3.01101 )
 
 [node name="ShootCooldown" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.3
 
 [node name="ChangeSceneCooldown" type="Timer" parent="."]
 wait_time = 0.2
