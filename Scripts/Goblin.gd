@@ -11,7 +11,6 @@ var goblinProjectile = preload("res://Scenes/Character/GoblinProjectile.tscn")
 var velocity = Vector2()
 var _reload; var _changeScene
 var callsCount; var auxCount = 0
-signal canChangeHp
 
 func _ready():
 	firstShoot.start()
@@ -27,7 +26,7 @@ func get_input():
 	if Input.is_action_pressed('ui_right'):
 		walkAnimation.play("RightAnim")
 		velocity.x += 1
-	if Input.is_action_pressed('ui_left'):
+	if Input.is_action_pressed("turnLeft"):
 		walkAnimation.play("LeftAnim")
 		velocity.x -= 1
 	velocity = velocity.normalized() * speed
@@ -46,10 +45,6 @@ func canDestroy():
 func onShootTimeout():
 	shoot()
 
-func canGetValue():
-	damageTaken.play("TakeDamage")
-	emit_signal("canChangeHp")
-
 func onFirstShootTimeout():
 	shoot()
 
@@ -64,3 +59,4 @@ func onSlowDownTimeout():
 	speed = speed * pow(1.4, callsCount)
 	print(speed)
 	auxCount = 0 
+

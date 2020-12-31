@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dingo-bell-sou-o-seu-papai-noel-dj-perera (online-audio-converter.com).ogg-027bf77d766f583fc1f5d32ef7515e1b.oggstr"
+
+[deps]
+
+source_file="res://Songs/dingo-bell-sou-o-seu-papai-noel-dj-perera (online-audio-converter.com).ogg"
+dest_files=[ "res://.import/dingo-bell-sou-o-seu-papai-noel-dj-perera (online-audio-converter.com).ogg-027bf77d766f583fc1f5d32ef7515e1b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

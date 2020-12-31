@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Elfs/SantaSheet.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Santa.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Walk"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[node name="Santa" instance=ExtResource( 1 )]
+position = Vector2( 75.0047, 37.3039 )
+script = ExtResource( 3 )
+velocity = Vector2( 50, 0 )
+armor = 100
+
+[node name="EnemySprite" parent="." index="0"]
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
+visible = false
+polygon = PoolVector2Array( 8.6233, -23.793, 2.23131, -23.9417, -1.78226, -22.9011, -6.83639, -17.847, -7.87695, -16.0632, -7.87695, -9.81987, -6.98504, -6.10359, -10.85, -2.83327, -11.8905, -1.79272, -15.0122, 2.51815, -16.0527, 5.49117, -16.796, 8.31554, -16.9447, 13.0724, -15.7554, 13.8156, -12.9311, 13.8156, -9.80941, 18.1265, -7.87695, 23.032, -6.83639, 23.9239, -4.30933, 24.0725, -0.890358, 18.7211, 0.893452, 18.8698, 1.63671, 20.8022, 3.42052, 23.6266, 4.01512, 23.7752, 6.69084, 24.0725, 7.58274, 23.1806, 9.06925, 20.6536, 9.8125, 17.8292, 9.8125, 15.3021, 12.9342, 13.9643, 15.9072, 13.9643, 16.9477, 12.9237, 17.0964, 8.61284, 16.0558, 5.34252, 15.1639, 2.0722, 11.9861, -2.03276, 7.11275, -7.1044, 7.95364, -10.1527, 7.5332, -16.144, 10.2661, -21.3996, 9.95077, -23.0814 )
+
+[node name="ShootTimer" type="Timer" parent="." index="3"]
+wait_time = 0.4
+
+[node name="Animator" type="AnimationPlayer" parent="." index="4"]
+anims/Walk = SubResource( 1 )
+[connection signal="timeout" from="ShootTimer" to="." method="onShootTimeout"]

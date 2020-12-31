@@ -4,7 +4,12 @@ const FILE_NAME = "user://game-data.json"
 
 var storedValue = {
 	"currentHp": 0,
-	"totalPoints": 1
+	"totalPoints": 1,
+	"canCallSanta": false,
+	"canCallText": false,
+	"canLevelUp": false,
+	"canCallSantaAgain": false,
+	"currentLevel:": 1
 }
 
 func save():
