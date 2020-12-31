@@ -52,6 +52,7 @@ func _process(_delta):
 		
 func areaEntered(enemyArea):
 	if enemyArea.is_in_group("Goblin"):
+		CameraShake.shake(5, 0.2)
 		enemyArea.armor -= 1
 		queue_free()
 		

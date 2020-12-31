@@ -11,6 +11,8 @@ onready var dialogueSpawner = get_node("DialogueSpawner")
 onready var enemySpawner = get_node("EnemySpawner")
 onready var hudSpawner = get_node("HudSpawner")
 onready var animator = get_node("DamageAnimation")
+onready var snowFall = get_node("SnowAnimator")
+onready var snowFallAux = get_node("SnowAnimatorAux")
 
 var spawnCurrentPosition
 var key = false
@@ -22,6 +24,8 @@ export(int) var yDistanceOffset = 67
 export(int) var velocityOffset = 70
 
 func _ready():
+	snowFall.play("SnowAnimation")
+	snowFallAux.play("SnowFall")
 	var label = loadText.instance()
 	var hud = playerHUD.instance()
 	hudSpawner.add_child(hud)

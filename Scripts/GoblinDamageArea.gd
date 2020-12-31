@@ -15,6 +15,7 @@ func setArmor(newValue):
 	StoreHp.storedValue.currentHp = armor
 	StoreHp.save()
 	emit_signal("canGetValue")
+	CameraShake.shake(3, 0.2)
 	if armor <= 0:
 		StoreHp.storedValue.currentHp = 0
 		StoreHp.save()
@@ -29,6 +30,7 @@ func areaEntered(enemyArea):
 
 func onBleedTimeout():
 	armor -= 2
+	CameraShake.shake(1.5, 0.2)
 	StoreHp.storedValue.currentHp = armor
 	StoreHp.save()
 	emit_signal("canGetValue")

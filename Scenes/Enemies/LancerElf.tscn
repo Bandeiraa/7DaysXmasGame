@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/LancerElf.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Elfs/LancerElf.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Elfs/TopLancerElfSheet.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/Elfs/BottomLancerElfSheet.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.73048, 15.5468 )
@@ -12,12 +13,24 @@ resource_name = "WalkAnimation"
 length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/path = NodePath("Top:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -31,13 +44,11 @@ velocity = Vector2( 40, 30 )
 armor = 7
 
 [node name="EnemySprite" parent="." index="0"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
 hframes = 2
+frame = 1
 
 [node name="EnemyCollider" parent="." index="1"]
-visible = false
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( -0.936447, 3.37119 )
 shape = SubResource( 1 )
 
 [node name="ShootTimer" type="Timer" parent="." index="2"]
@@ -45,4 +56,14 @@ wait_time = 2.0
 
 [node name="ElfAnimator" type="AnimationPlayer" parent="." index="3"]
 anims/WalkAnimation = SubResource( 2 )
+
+[node name="Top" type="Sprite" parent="." index="4"]
+z_index = 1
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="Bottom" type="Sprite" parent="." index="5"]
+position = Vector2( 0, 15.8798 )
+texture = ExtResource( 4 )
+hframes = 2
 [connection signal="timeout" from="ShootTimer" to="." method="onSpearTimeout"]

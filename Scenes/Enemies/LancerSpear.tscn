@@ -15,6 +15,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
 [node name="LancerSpear" instance=ExtResource( 2 )]
+z_index = 4
 script = ExtResource( 4 )
 velocity = Vector2( 0, 100 )
 

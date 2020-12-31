@@ -3,7 +3,7 @@ extends "res://Scripts/Enemy.gd"
 export var armor = 12 setget setArmor
 var offset = Vector2()
 var instancedBloodPosition
-var increaseVelocity = Vector2(10, 20)
+var increaseVelocity = Vector2(0, 20)
 
 #var mageSpells = [preload("res://Scenes/Enemies/IceBeam.tscn"), preload("res://Scenes/Enemies/FireWave.tscn")]
 var bloodPool = preload("res://Scenes/Interface/BloodLifetime.tscn")
@@ -37,7 +37,8 @@ func _process(_delta):
 		
 func areaEntered(enemyArea):
 	if enemyArea.is_in_group("Goblin"):
-		enemyArea.armor -= 1
+		CameraShake.shake(5, 0.2)
+		enemyArea.armor -= 4
 		queue_free()
 		
 func setArmor(newValue):
