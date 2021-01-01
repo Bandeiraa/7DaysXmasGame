@@ -7,5 +7,5 @@ func _ready():
 	
 func areaEntered(enemyArea):
 	if enemyArea.is_in_group("Goblin"):
-		enemyArea.armor -= 3
+		enemyArea.armor -= 1
 		queue_free()

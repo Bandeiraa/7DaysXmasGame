@@ -9,7 +9,7 @@ func _ready():
 	
 func areaEntered(enemyArea):
 	if enemyArea.is_in_group("Goblin"):
-		enemyArea.armor -= 4
+		enemyArea.armor -= 1
 		print("Vida do player: ", enemyArea.armor)
 		queue_free()
 

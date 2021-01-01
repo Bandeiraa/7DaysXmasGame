@@ -161,12 +161,14 @@ one_shot = true
 z_index = 1
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="ButtonLayer"]
-position = Vector2( -71.571, 12.2873 )
+position = Vector2( -70.3838, 3.35134 )
+scale = Vector2( 2, 2 )
 normal = ExtResource( 6 )
-action = "turnLeft"
+action = "ui_left"
 
 [node name="TouchScreenButton2" type="TouchScreenButton" parent="ButtonLayer"]
-position = Vector2( 57.9953, 13.0989 )
+position = Vector2( 42.4648, 3.35134 )
+scale = Vector2( 2, 2 )
 normal = ExtResource( 7 )
 action = "ui_right"
 [connection signal="timeout" from="KinematicBody/ShootCooldown" to="KinematicBody" method="onShootTimeout"]

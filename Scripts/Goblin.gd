@@ -26,7 +26,7 @@ func get_input():
 	if Input.is_action_pressed('ui_right'):
 		walkAnimation.play("RightAnim")
 		velocity.x += 1
-	if Input.is_action_pressed("turnLeft"):
+	if Input.is_action_pressed("ui_left"):
 		walkAnimation.play("LeftAnim")
 		velocity.x -= 1
 	velocity = velocity.normalized() * speed

@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Fonts/FreePixel.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/GameOver.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Interface/SantaGameOver.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Interface/ScoreBackground.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/BKANT.TTF" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 1 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
@@ -28,15 +31,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 71.9187, 180.546 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
 [node name="GameOverMessage" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -71.0
-margin_top = -156.5
+margin_top = -168.406
 margin_right = 72.0
-margin_bottom = -83.5
+margin_bottom = -95.4055
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
@@ -48,20 +56,52 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TotalPoints" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -71.0
+margin_top = -134.015
+margin_right = 72.0
+margin_bottom = -61.0145
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TryAgainSprite" type="Sprite" parent="."]
+position = Vector2( 73.3264, 237.512 )
+scale = Vector2( 1.33409, 0.880683 )
+texture = ExtResource( 4 )
+
+[node name="QuitSprite" type="Sprite" parent="."]
+position = Vector2( 73.3264, 288.777 )
+scale = Vector2( 1.33409, 0.880683 )
+texture = ExtResource( 4 )
+
 [node name="TryAgain" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -41.0
-margin_top = -87.0
-margin_right = 41.0
-margin_bottom = -64.0
+margin_left = -40.2996
+margin_top = 70.5292
+margin_right = 41.7004
+margin_bottom = 93.5292
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 enabled_focus_mode = 0
 text = "Tentar de novo"
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Quit" type="Button" parent="."]
 anchor_left = 0.5
@@ -69,13 +109,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -41.0
-margin_top = -54.5
+margin_top = 122.205
 margin_right = 41.0
-margin_bottom = -31.5
+margin_bottom = 145.205
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 enabled_focus_mode = 0
 text = "Sair"
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="TryAgain" to="." method="onTryAgainPressed"]
 [connection signal="pressed" from="Quit" to="." method="onQuitPressed"]

@@ -18,6 +18,7 @@ onready var santaSpawner = get_node("SantaSpawner")
 
 var spawnCurrentPosition
 var key = false
+var currentFrame = 0
 var spawnKey = false
 var currentHp = false
 var santa
@@ -58,9 +59,10 @@ func canCall():
 	key = true
 	
 func updateHp():
+	currentFrame += 1
 	StoreHp.loadData()
-	var convertToString = str(StoreHp.storedValue.currentHp)
-	$HudSpawner/Hud/PlayerStatsContainer/Health.text = "Vida: " + convertToString
+	if currentFrame <= 8:
+		$HudSpawner/Hud/PlayerStatsContainer/HealthSprite.set_frame(currentFrame)
 	animator.play("Damage")
 	currentHp = false
 	
@@ -109,7 +111,7 @@ func _process(delta):
 		currentHp = false
 	StoreHp.loadData()
 	points = StoreHp.storedValue.totalPoints
-	$HudSpawner/Hud/PlayerStatsContainer/Points.text = "Pontos: " + str(points)
+	$HudSpawner/Hud/PlayerStatsContainer/Points.text = str(points)
 	if points >= 500 * StoreHp.storedValue.currentLevel and key == false:
 		dialogueSpawner.remove_child(label)
 		enemySpawner.remove_child(enemies)

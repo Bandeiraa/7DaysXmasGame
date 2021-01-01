@@ -1,6 +1,6 @@
 extends Area2D
 
-export(int) var armor = 20 setget setArmor
+export(int) var armor = 8 setget setArmor
 signal canQueueFree; signal canGetValue; signal canSlowDown
 
 func _ready():
@@ -29,7 +29,7 @@ func areaEntered(enemyArea):
 		$BleedTimer.start()
 
 func onBleedTimeout():
-	armor -= 2
+	armor -= 1
 	CameraShake.shake(1.5, 0.2)
 	StoreHp.storedValue.currentHp = armor
 	StoreHp.save()
